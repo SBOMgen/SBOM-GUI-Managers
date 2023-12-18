@@ -37,6 +37,7 @@ passport.use(
       callbackURL: "/auth/github/callback",
     },
     function (accessToken, refreshToken, profile, done) {
+      profile.accessToken=accessToken;
       done(null, profile);
     }
   )

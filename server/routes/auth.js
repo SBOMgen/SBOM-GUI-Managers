@@ -28,7 +28,7 @@ router.get("/logout", (req, res) => {
 
 
 
-router.get("/github", passport.authenticate("github", { scope: ["profile"] }));
+router.get("/github", passport.authenticate("github", { scope: ["profile", "repo"] }));
 
 router.get(
   "/github/callback",

@@ -2,13 +2,14 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Repos from "./pages/Repos";
 
 const App = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const getUser = () => {
-      fetch("http://localhost:5000/auth/login/success", {
+    const getUser = async () => {
+      await fetch("http://localhost:5000/auth/login/success", {
         method: "GET",
         credentials: "include",
         headers: {
@@ -29,6 +30,7 @@ const App = () => {
         });
     };
     getUser();
+    console.log(user);
   }, []);
 
   return (
@@ -39,6 +41,10 @@ const App = () => {
           <Route
             path="/login"
             element={user ? <Navigate to="/" /> : <Login />}
+          />
+          <Route 
+            path="/repos"
+            element={<Repos /> }
           />
         </Routes>
       </div>
