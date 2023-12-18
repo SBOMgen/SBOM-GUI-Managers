@@ -1,13 +1,17 @@
 const cookieSession = require("cookie-session");
 const express = require("express");
 const cors = require("cors");
-const passportSetup = require("./passport");
 const passport = require("passport");
+const dotenv = require("dotenv");
+
 const authRoute = require("./routes/auth");
 const app = express();
 
+app.use(express.json());
+app.use(dotenv.config({ path: "./config.env" }));
+
 app.use(
-  cookieSession({ name: "session", keys: ["lama"], maxAge: 24 * 60 * 60 * 100 })
+  cookieSession({ name: "session", keys: ["cdDev"], maxAge: 24 * 60 * 60 * 100 })
 );
 
 app.use(passport.initialize());
@@ -23,6 +27,7 @@ app.use(
 
 app.use("/auth", authRoute);
 
-app.listen("5000", () => {
-  console.log("Server is running!");
+const port = process.env.PORT
+app.listen(port, () => {
+  console.log(`Server is running on port ${port} !`);
 });
