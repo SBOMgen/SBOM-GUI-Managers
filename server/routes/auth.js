@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const passport = require("passport");
 
-const clientURL = process.env.clientURL
+const CLIENT_URL = "http://localhost:5173";
 
 router.get("/login/success", (req, res) => {
   if (req.user) {
@@ -23,17 +23,20 @@ router.get("/login/failed", (req, res) => {
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect(clientURL);
+  res.redirect(CLIENT_URL);
 });
+
+
 
 router.get("/github", passport.authenticate("github", { scope: ["profile"] }));
 
 router.get(
   "/github/callback",
   passport.authenticate("github", {
-    successRedirect: clientURL,
+    successRedirect: CLIENT_URL,
     failureRedirect: "/login/failed",
   })
 );
+
 
 module.exports = router

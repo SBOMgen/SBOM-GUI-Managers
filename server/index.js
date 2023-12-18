@@ -1,22 +1,26 @@
 const cookieSession = require("cookie-session");
 const express = require("express");
 const cors = require("cors");
+const passportSetup = require("./passport");
 const passport = require("passport");
-const dotenv = require("dotenv");
+const dotenv = require("dotenv")
+dotenv.config({ path: './config.env' })
+const GithubStrategy = require("passport-github2").Strategy;
+
 
 const authRoute = require("./routes/auth");
 const app = express();
 
-app.use(express.json());
-app.use(dotenv.config({ path: "./config.env" }));
+const id = process.env.GITHUB_CLIENT_ID
+const secret = process.env.GITHUB_CLIENT_SECRET
+
 
 app.use(
-  cookieSession({ name: "session", keys: ["cdDev"], maxAge: 24 * 60 * 60 * 100 })
+  cookieSession({ name: "session", keys: ["lama"], maxAge: 24 * 60 * 60 * 100 })
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -25,9 +29,33 @@ app.use(
   })
 );
 
-app.use("/auth", authRoute);
+passport.use(
+  new GithubStrategy(
+    {
+      clientID: id,
+      clientSecret: secret,
+      callbackURL: "/auth/github/callback",
+    },
+    function (accessToken, refreshToken, profile, done) {
+      done(null, profile);
+    }
+  )
+);
 
+
+
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
+
+
+
+app.use("/auth", authRoute);
 const port = process.env.PORT
 app.listen(port, () => {
-  console.log(`Server is running on port ${port} !`);
+  console.log("Server is running!");
 });
