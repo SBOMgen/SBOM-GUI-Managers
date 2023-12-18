@@ -1,7 +1,6 @@
 const cookieSession = require("cookie-session");
 const express = require("express");
 const cors = require("cors");
-const passportSetup = require("./passport");
 const passport = require("passport");
 const dotenv = require("dotenv")
 dotenv.config({ path: './config.env' })
