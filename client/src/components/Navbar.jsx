@@ -1,7 +1,37 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-const Navbar = ({ user }) => {
-    console.log(user);
+const Navbar = () => {
+    // console.log(user);
+    const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const getUser = async () => {
+      await fetch("http://localhost:5000/auth/login/success", {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      })
+        .then((response) => {
+          if (response.status === 200) return response.json();
+          throw new Error("authentication has been failed!");
+        })
+        .then((resObject) => {
+          setUser(resObject.user);
+          console.log("YES")
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getUser();
+    // console.log(user);
+  }, []);
+
     const logout = () => {
         window.open("http://localhost:5000/auth/logout", "_self");
     };

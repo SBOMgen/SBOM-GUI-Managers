@@ -8,6 +8,7 @@ const GithubStrategy = require("passport-github2").Strategy;
 
 
 const authRoute = require("./routes/auth");
+const githubRoute = require("./routes/github");
 const app = express();
 
 const id = process.env.GITHUB_CLIENT_ID
@@ -55,6 +56,7 @@ passport.deserializeUser((user, done) => {
 
 
 app.use("/auth", authRoute);
+app.use("/github", githubRoute);
 const port = process.env.PORT
 app.listen(port, () => {
   console.log("Server is running!");
