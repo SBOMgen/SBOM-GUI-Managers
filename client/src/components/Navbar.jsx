@@ -23,13 +23,13 @@ const Navbar = () => {
         .then((resObject) => {
           setUser(resObject.user);
           console.log("YES")
+          console.log(resObject.user);
         })
         .catch((err) => {
           console.log(err);
         });
     };
     getUser();
-    // console.log(user);
   }, []);
 
     const logout = () => {

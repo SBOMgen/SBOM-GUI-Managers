@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Repos from "./pages/Repos";
 import { useDispatch } from 'react-redux';
 import { toggleAuthentication, addUser } from "./function/authSlice";
+import Workflows from "./pages/Workflows";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,10 @@ const App = () => {
           <Route 
             path="/repos"
             element={<Repos />}
+          />
+          <Route
+            path="/workflows"
+            element={<Workflows />} 
           />
         </Routes>
       </div>
