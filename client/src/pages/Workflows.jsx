@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import {useState } from 'react'
+import {useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import Card_workflow from '../components/Card_workflow'
 const Workflows = ({repo,owner}) => {
     const [list,setlist]=useState([])
@@ -19,7 +20,9 @@ const Workflows = ({repo,owner}) => {
         },
         withCredentials: true
       };
-      
+      useEffect(()=>{
+        if (list.length == 0)
+        {
       axios(options)
         .then(response => {
           const workflows = response.data;
@@ -29,6 +32,8 @@ const Workflows = ({repo,owner}) => {
         .catch(error => {
           console.error('Error fetching repositories:', error.response ? error.response.data : error.message);
         });
+      }
+    }, [list])
     return (
         <>
         {
@@ -37,7 +42,7 @@ const Workflows = ({repo,owner}) => {
           return(
             
             <div key={k}>
-               <Card_workflow head={item.head_branch} head_sha={item.head_sha} event={item.event} run={item.run_started_at} url={item.workflow_url} owner={item.actor.avatar_url} triggering={item.triggering_actor.login}/>
+               <Link to={`/workflow/${owner}/${repo}/${item.id}/report`}> <Card_workflow head={item.head_branch} head_sha={item.head_sha} event={item.event} run={item.run_started_at} url={item.workflow_url} owner={item.actor.avatar_url} triggering={item.triggering_actor.login}/></Link>
          
             </div>
              )

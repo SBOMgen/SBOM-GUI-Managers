@@ -75,6 +75,8 @@ const Repos = () => {
         withCredentials: true
       };
       useEffect(()=>{
+      if (list.length == 0)
+      {
         axios(options)
         .then(response => {
           workflows = response.data;
@@ -85,7 +87,8 @@ const Repos = () => {
         .catch(error => {
           console.error('Error fetching repositories:', error.response ? error.response.data : error.message);
         });
-      },[workflows])
+      }
+      },[list])
       
     return (
         <>
