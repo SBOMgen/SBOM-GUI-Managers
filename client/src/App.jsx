@@ -6,6 +6,9 @@ import Login from "./pages/Login";
 import ReposPage from "./pages/ReposPage";
 import WorkflowsPage from "./pages/WorkflowsPage";
 
+import Report from "./pages/Report";
+
+
 const App = () => {
     return (
         <BrowserRouter>
@@ -15,6 +18,11 @@ const App = () => {
                     <Route path="/login" element={<Login />} />
                     <Route path="/repos" element={<ReposPage />} />
                     <Route path="/workflow/:name/:repo" element={<WorkflowsPage />} />
+
+                    <Route path="/repos" element={<Repos />} />
+                    <Route path="/workflows" element={<Workflows />} />
+                    <Route path="/report" element={<Report />} />
+
                 </Routes>
             </div>
         </BrowserRouter>

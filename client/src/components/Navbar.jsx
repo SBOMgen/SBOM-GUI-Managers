@@ -31,6 +31,7 @@ const Navbar = () => {
                     const resObject = await response.json();
                     dispatch(setTrue());
                     setUser(resObject.user);
+                    console.log(resObject.user);
                 } else {
                     dispatch(setFalse());
                     throw new Error("Authentication has failed!");
