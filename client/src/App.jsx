@@ -1,35 +1,22 @@
-import Navbar from "./components/Navbar";
-import Login from "./pages/Login";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Repos from "./pages/Repos";
-import { useDispatch } from 'react-redux';
-import { toggleAuthentication, setFalse, setTrue } from "./function/authSlice";
+import Navbar from "./components/Navbar";
 import Workflows from "./pages/Workflows";
+import Login from "./pages/Login";
 
 const App = () => {
-  const dispatch = useDispatch();
-  return (
-    <BrowserRouter>
-      <div>
-        <Navbar />
-        <Routes>
-          <Route
-            path="/login"
-            element={<Login />}
-          />
-          <Route 
-            path="/repos"
-            element={<Repos />}
-          />
-          <Route
-            path="/workflows"
-            element={<Workflows />} 
-          />
-        </Routes>
-      </div>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <div>
+                <Navbar />
+                <Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/repos" element={<Repos />} />
+                    <Route path="/workflows" element={<Workflows />} />
+                </Routes>
+            </div>
+        </BrowserRouter>
+    );
 };
 
 export default App;

@@ -16,21 +16,21 @@ const secret = process.env.GITHUB_CLIENT_SECRET
 
 
 app.use(
-  cookieSession({ name: "session", keys: ["lama"], maxAge: 24 * 60 * 60 * 100 })
+    cookieSession({ name: "session", keys: ["lama"], maxAge: 24 * 60 * 60 * 100 })
 );
 
 passport.use(
-  new GithubStrategy(
-    {
-      clientID: id,
-      clientSecret: secret,
-      callbackURL: "/auth/github/callback",
-    },
-    function (accessToken, refreshToken, profile, done) {
-      profile.accessToken=accessToken;
-      done(null, profile);
-    }
-  )
+    new GithubStrategy(
+        {
+            clientID: id,
+            clientSecret: secret,
+            callbackURL: "/auth/github/callback",
+        },
+        function (accessToken, refreshToken, profile, done) {
+            profile.accessToken = accessToken;
+            done(null, profile);
+        }
+    )
 );
 app.use(passport.initialize());
 app.use(passport.session());
@@ -46,11 +46,11 @@ app.use(
 
 
 passport.serializeUser((user, done) => {
-  done(null, user);
+    done(null, user);
 });
 
 passport.deserializeUser((user, done) => {
-  done(null, user);
+    done(null, user);
 });
 
 
@@ -59,5 +59,5 @@ app.use("/auth", authRoute);
 app.use("/github", githubRoute);
 const port = process.env.PORT
 app.listen(port, () => {
-  console.log("Server is running!");
+    console.log("Server is running!");
 });
