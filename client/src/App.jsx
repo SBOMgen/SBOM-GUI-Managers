@@ -7,6 +7,7 @@ import ReposPage from "./pages/ReposPage";
 import WorkflowsPage from "./pages/WorkflowsPage";
 
 import Report from "./pages/Report";
+import ReportPage from "./pages/ReportPage";
 
 
 const App = () => {
@@ -18,11 +19,12 @@ const App = () => {
                     <Route path="/login" element={<Login />} />
                     <Route path="/repos" element={<ReposPage />} />
                     <Route path="/workflow/:name/:repo" element={<WorkflowsPage />} />
+                    <Route path="/workflow/:name/:repo/:run_id/report" element={<ReportPage />} />
 
-                    <Route path="/repos" element={<Repos />} />
+                    {/* <Route path="/repos" element={<Repos />} />
                     <Route path="/workflows" element={<Workflows />} />
-                    <Route path="/report" element={<Report />} />
-
+                    <Route path=":repo/:owner/:run_id/report" element={<ReportPage/>} /> */}
+                    
                 </Routes>
             </div>
         </BrowserRouter>
@@ -30,3 +32,4 @@ const App = () => {
 };
 
 export default App;
+            
