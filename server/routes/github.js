@@ -17,7 +17,7 @@ router.get("/repos", (req, res) => {
       axios(options)
         .then(response => {
           const repos = response.data;
-          console.log(repos);
+        //   console.log(repos);
           res.status(200).json({
             success: true,
             message: "successfull",
@@ -41,21 +41,28 @@ router.get("/repos", (req, res) => {
 })
 
 router.get("/workflows", (req, res) => {
-    const { repo, owner } = req.body;
-    if (repo && owner && req.user) {
+    const { repo, owner } = req.query;
+    if (!repo || !owner || !req.user)
+    {
+        res.status(400).json({
+            success: false,
+            message: "failure",
+          });
+    }
+    console.log(req.user.accessToken);
         const options = {
             method: 'GET',
-            url: `https://api.github.com/user/repos/${owner}/${repo}/actions/runs`,
+            url: `https://api.github.com/repos/${owner}/${repo}/actions/runs`,
             headers: {
               'Authorization': `Bearer ${req.user.accessToken}`,
               'User-Agent': 'SBOM-UI'
             },
           };
-          
+          console.log(options.url);
           axios(options)
             .then(response => {
-              const workflows = response.workflow_runs;
-              console.log(workflows);
+              const workflows = response.data.workflow_runs;
+            //   console.log(response);
               let sbom_workflows = [];
               for (let index = 0; index < workflows.length; index++) {
                 if (workflows[index].name == "Create SBOM")
@@ -75,14 +82,7 @@ router.get("/workflows", (req, res) => {
               console.error('Error fetching repositories:', error.response ? error.response.data : error.message);
             });
         // console.log(user)
-    }
-    else
-    {
-        res.status(400).json({
-            success: false,
-            message: "failure",
-          });
-    }
+    
 })
 
 

@@ -10,15 +10,12 @@ const Workflows = () => {
     }
     const options = {
         method: 'GET',
-        url: 'https://localhost:5000/workflows',
-        // headers: {
-        //   'Authorization': `Bearer ${req.user.accessToken}`,
-        //   'User-Agent': 'SBOM-UI'
-        // },
-        body: {
+        url: 'http://localhost:5000/github/workflows',
+        params: {
             repo: 'Drawn2Shoe',
             owner: 'Akashsah2003'
-        }
+        },
+        withCredentials: true
       };
       
       axios(options)
