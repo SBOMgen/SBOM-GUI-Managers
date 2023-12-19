@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { toggleAuthentication, setTrue, setFalse } from "../function/authSlice";
 
 const Navbar = () => {
-    // console.log(user);
     const [user, setUser] = useState(null);
     const dispatch = useDispatch();
 
