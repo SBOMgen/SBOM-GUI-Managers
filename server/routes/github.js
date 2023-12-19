@@ -66,13 +66,14 @@ router.get("/workflows", (req, res) => {
                 {
                     sbom_workflows.push(workflows[index]);
                 }
-                res.status(200).json({
-                    success: true,
-                    message: "successfull",
-                    user: req.user,
-                    data: sbom_workflows
-                });
-            }})
+            }
+            res.status(200).json({
+                success: true,
+                message: "successfull",
+                user: req.user,
+                data: sbom_workflows
+            });
+        })
             .catch(error => {
                 console.error('Error fetching repositories:', error.response ? error.response.data : error.message);
             });
