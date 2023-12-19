@@ -12,3 +12,95 @@
         scrollbar-width: none;  /* Firefox */
   }
 }
+
+
+@font-face {
+    font-family: "Motiva Sans Light";
+    src: url("http://localhost:3000/fonts/Motiva-Sans-Light.ttf") format("truetype");
+    font-style: normal;
+}
+
+
+.style-0 {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    
+    /* flex-flow: row wrap; */
+    min-width: 0px;
+    gap: 25vw;
+    box-sizing: border-box;
+    margin-left: 150px;
+    margin-top: 170px;
+    transform: scale(0.7); /* Adjust the scale value as needed */
+    transform-origin: 0 0;
+}
+
+.style-1 {
+    display: block;
+    flex: 0 0 45.8333%;
+    max-width: 45.8333%;
+    position: relative;
+    min-height: 1px;
+    box-sizing: border-box;
+    transform: scale(1.4);
+    margin-left: 300px;
+}
+
+.style-2 {
+    position: relative;
+    max-width: 540px;
+    box-sizing: border-box;
+}
+
+.style-3 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(24, 33, 109);
+    font-size: 70px;
+    line-height: 66.08px;
+    margin-top: 0px;
+    margin-bottom: 28px;
+    font-weight:600;
+    box-sizing: border-box;
+}
+
+.style-4 {
+    margin: 24px 0px 32px;
+    color: rgb(24, 33, 109);
+    font-size: 21px;
+    line-height: 29.61px;
+    margin-top: 24px;
+    margin-bottom: 32px;
+    box-sizing: border-box;
+}
+
+
+.style-7 {
+    margin-left: 20px;
+    background: black none repeat scroll 0% 0% / auto padding-box border-box;
+    color: rgb(46, 24, 106);
+    font-size: 16px;    
+    font-weight: 700;
+    width: 100%;
+    border: 0.97561px solid rgb(237, 243, 245);
+    border-radius: 4px;
+    padding: 13px 0px;
+    cursor: pointer;
+    margin-top: 10px;
+    max-width: 180px;
+    transition: all 0.3s ease-in-out 0s;
+    box-shadow: rgba(23, 31, 114, 0.2) 0px 16px 30px 0px;
+    appearance: button;
+    text-transform: none;
+    overflow: visible;
+    font-family: 'Motiva Sans Light', sans-serif;
+    line-height: 25.144px;
+    touch-action: manipulation;
+    box-sizing: border-box;
+    border-radius: 10%;
+}
+
+.gif{
+    transform: scale(5); /* Adjust the scale value as needed */
+}
+

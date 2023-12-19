@@ -49,7 +49,7 @@ const Navbar = () => {
     };
     return (
         <>
-        <div className="navbar flex justify-between p-3  text-white bg-black m-0">
+        <div className="navbar flex justify-between p-6  text-white bg-zinc-800 m-0">
             <div className="mt-2 flex gap-1">
                 <img src="https://icons8.com/icon/2963/globe" alt=""/>
                 <span className="logo font-bold">
