@@ -12,6 +12,13 @@ router.get("/login/success", (req, res) => {
       //   cookies: req.cookies
     });
   }
+  else {
+    res.status(401).json({
+      success: false,
+      message: "user is not logged in",
+      //   cookies: req.cookies
+    });
+  }
 });
 
 router.get("/login/failed", (req, res) => {
