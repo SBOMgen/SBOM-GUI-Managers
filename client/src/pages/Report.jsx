@@ -49,23 +49,27 @@ const Report = ({repo,owner,run_id}) => {
     },
     withCredentials: true
   };
-
+  useEffect(()=>{
+    if (files.length == 0)
+    {
   axios(options)
     .then(response => {
       const artifacts = response.data;
 
       setfiles(artifacts.data);
-      setsbom(files[0])
       // setver(files[1])
       /*if( xml!= undefined)setxml(files[2]) */
       // console.log(sbom, ver, xml)
       // console.log(ver)
-
-
+      
+      
     })
     .catch(error => {
       console.error('Error fetching reports:', error.response ? error.response.data : error.message);
     });
+  }
+  setsbom(files[0])
+  }, [files])
   const temp = { ...files[1] }.vulnerabilities
   console.log(temp)
   const temp1 = { ...files }
