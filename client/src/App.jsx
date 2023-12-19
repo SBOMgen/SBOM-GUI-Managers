@@ -9,8 +9,6 @@ import Workflows from "./pages/Workflows";
 
 const App = () => {
   const dispatch = useDispatch();
-  
-
   return (
     <BrowserRouter>
       <div>

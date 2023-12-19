@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 
 const Login = () => {
   const [user, setUser] = useState(null);
-
   useEffect(() => {
     const getUser = async () => {
       await fetch("http://localhost:5000/auth/login/success", {
@@ -22,8 +21,6 @@ const Login = () => {
         })
         .then((resObject) => {
           setUser(resObject.user);
-          console.log("YES")
-          dispatch(addUser(resObject.user));
         })
         .catch((err) => {
           console.log(err);
