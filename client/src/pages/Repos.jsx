@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleAuthentication, setTrue, setFalse } from "../function/authSlice";
-
+import Card from "../components/Card"
 const Repos = () => {
+    let workflows ={};
+    const [list,setlist]=useState([])
     const auth = async () => {
         return await useSelector((state) => state.isAuthenticated);
     };
@@ -62,7 +64,38 @@ const Repos = () => {
     //       console.error('Error fetching repositories:', error.response ? error.response.data : error.message);
     //     });
     // console.log(user);
-    return <>Repos</>;
+    
+    const options = {
+        method: 'GET',
+        url: 'http://localhost:5000/github/repos',
+        /* params: {
+            repo: 'Drawn2Shoe',
+            owner: 'Akashsah2003'
+        }, */
+        withCredentials: true
+      };
+      useEffect(()=>{
+        axios(options)
+        .then(response => {
+          workflows = response.data;
+          setlist(workflows.data);
+          console.log(list)
+          
+        })
+        .catch(error => {
+          console.error('Error fetching repositories:', error.response ? error.response.data : error.message);
+        });
+      },[workflows])
+      
+    return (
+        <>
+          {list.map((item,k)=>{
+                 return(
+                    <Card key={k} visibility={item.visibility}name={item.name} user={item.owner.login} language={item.language} oi={item.open_issues} owner={item.owner.avatar_url} up={item.updated_at} url={item.url} cre={item.created_at}/>
+                 )
+})}
+        </>
+    )
 };
 
 export default Repos;

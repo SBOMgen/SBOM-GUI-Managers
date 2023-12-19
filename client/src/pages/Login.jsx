@@ -30,22 +30,23 @@ const Login = () => {
     }, []);
 
     if (user) {
-        return <Navigate to="/" />;
+        return <Navigate to="/"/>;
     }
     const github = () => {
         window.open("http://localhost:5000/auth/github", "_self");
     };
     return (
-        <div className="login">
+        <div className="login text-center m-2">
             <h1 className="loginTitle">Choose a Login Method</h1>
-            <div className="wrapper">
-                <div className="left">
-                    <div className="loginButton github" onClick={github}>
-                        <img src={Github} alt="" className="icon" />
-                        Github
+            <div className="wrapper text-center ">
+                <div className=" mx-auto mt-10 ml-[25vw]">
+                    <div className=" flex  justify-center rounded-xl loginButton github mb-[20px] gap-2 bg-black text-white max-w-[140px] h-[40
+                        px]" onClick={github}>
+                        <img src={Github} alt="" className="icon " />
+                        <span>Github</span>
                     </div>
                 </div>
-                <div className="center">
+                {/* <div className="center">
                     <div className="line" />
                     <div className="or">OR</div>
                 </div>
@@ -53,9 +54,10 @@ const Login = () => {
                     <input type="text" placeholder="Username" />
                     <input type="text" placeholder="Password" />
                     <button className="submit">Login</button>
-                </div>
+                </div> */}
             </div>
-        </div>
+        </div> 
+        
     );
 };
 
