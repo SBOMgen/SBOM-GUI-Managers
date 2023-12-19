@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Repos from "./pages/Repos";
 import { useDispatch } from 'react-redux';
-import { toggleAuthentication, addUser } from "./function/authSlice";
+import { toggleAuthentication, setFalse, setTrue } from "./function/authSlice";
 import Workflows from "./pages/Workflows";
 
 const App = () => {
