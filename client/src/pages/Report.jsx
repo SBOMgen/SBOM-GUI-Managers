@@ -166,8 +166,6 @@ const Report = ({ repo, owner, run_id }) => {
     <>
       {files[0] && files[1] ? <><div>
 
-        <h1 className="text-6xl font-medium  m-2 text-center mt-10">Vulnerability Table</h1>
-
         <h1 className="text-center text-3xl mt-8">Pie chart of vulnerabilities</h1>
         <div className="flex items-center mt-10 mb-0 py-0 pl-[280px] justify-center">
         <PieChart width={800} height={500}>
@@ -188,7 +186,7 @@ const Report = ({ repo, owner, run_id }) => {
         </PieChart>
         
       </div>
-        <h1 className="text-6xl font-medium  mt-0 m-2 text-center ">VUL TABLE</h1>
+        <h1 className="text-6xl font-medium  mt-0 m-2 text-center ">Vulnerability Table</h1>
 
         <DataTable advisories={temp}/>
         <h1 className="text-6xl font-medium  m-2 text-center mt-10">Sbom.json </h1>
