@@ -1,5 +1,6 @@
 import { Navigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import{PieChart,Pie,Cell,Legend} from "recharts";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Markdown from 'react-markdown'
@@ -9,6 +10,11 @@ const Report = ({ repo, owner, run_id }) => {
   const[glist,setglist]=useState([])
   const [files, setfiles] = useState([])
   const [sbom, setsbom] = useState("")
+  const [severityCounts, setSeverityCounts] = useState({
+    medium: 0,
+    high: 0,
+    critical: 0,
+  });
   const [ver, setver] = useState("")
   // const [xml,setxml]=useState("")
   const color_picker = (score) => {
@@ -112,10 +118,46 @@ const Report = ({ repo, owner, run_id }) => {
     }
     setsbom(files[0])
   }, [files])
+  
   const temp = { ...files[1] }.vulnerabilities
   console.log(temp)
   const temp1 = { ...files }
   /* setver(temp) */
+  useEffect(() => {
+    // Update severity counts when temp changes
+    if (temp && temp.length > 0) {
+      const counts = { medium: 0, high: 0, critical: 0 };
+
+      temp.forEach(item => {
+        if (item.ratings && item.ratings.length > 0) {
+          const severity = item.ratings[0].severity;
+
+          switch (severity) {
+            case 'medium':
+              counts.medium += 1;
+              break;
+            case 'high':
+              counts.high += 1;
+              break;
+            case 'critical':
+              counts.critical += 1;
+              break;
+            default:
+              break;
+          }
+        }
+      });
+
+      setSeverityCounts(counts);
+    }
+  }, [temp]);
+  const data = [
+    { name: 'Medium', value: severityCounts.medium },
+    { name: 'High', value: severityCounts.high },
+    { name: 'Critical', value: severityCounts.critical },
+  ];
+
+  const COLORS = ['#39FF14', '#CDC50A', '#FF0000'];
 
 
 
@@ -123,7 +165,27 @@ const Report = ({ repo, owner, run_id }) => {
 
     <>
       {files[0] && files[1] ? <><div>
-        <h1 className="text-6xl font-medium  m-2 text-center mt-10">VUL TABLE</h1>
+        <h1 className="text-center text-3xl mt-8">Pie chart of vulnerabilities</h1>
+        <div className="flex items-center mt-10 mb-0 py-0 pl-[280px] justify-center">
+        <PieChart width={800} height={800}>
+          <Pie
+            data={data}
+            cx={200}
+            cy={200}
+            innerRadius={120}
+            outerRadius={160}
+            fill="#8884d8"
+            dataKey="value"
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+          <Legend layout="horizontal" align="left" verticalAlign="top" />
+        </PieChart>
+        
+      </div>
+        <h1 className="text-6xl font-medium  mt-0 m-2 text-center ">VUL TABLE</h1>
         <DataTable advisories={temp}/>
         <h1 className="text-6xl font-medium  m-2 text-center mt-10">SBOM.JSON </h1>
         

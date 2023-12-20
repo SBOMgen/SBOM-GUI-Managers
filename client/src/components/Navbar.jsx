@@ -55,7 +55,7 @@ const Navbar = () => {
                 <span className="logo font-bold">
                    
                     <Link className="link" to="/">
-                        Lama App
+                        SBOMGEN
                     </Link>
                 </span>
             </div>
