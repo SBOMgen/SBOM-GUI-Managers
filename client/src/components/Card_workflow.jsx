@@ -51,7 +51,7 @@ const Card_workflow = ({head,head_sha,event,run,url,triggering,owner,title,conc,
         </div>
         <div className="w-full md:w-2/3 bg-white flex flex-col space-y-2 p-3">
           <div className="flex justify-between item-center">
-          <p className="text-xl text-gray-800">
+          <p className="text-xl text-gray-800 font-bold">
             {title}
           </p>
             <div className="bg-green-200 px-3 py-1 rounded-full text-xs font-medium text-gray-800 hidden md:block">

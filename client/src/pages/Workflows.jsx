@@ -42,7 +42,7 @@ const Workflows = ({repo,owner}) => {
           return(
             
             <div key={k}>
-               <Link to={`/workflow/${owner}/${repo}/${item.id}/report`}> <Card_workflow head={item.head_branch} head_sha={item.head_sha} event={item.event} run={item.run_started_at} url={item.workflow_url} owner={item.actor.avatar_url} triggering={item.triggering_actor.login}/></Link>
+               <Link to={`/workflow/${owner}/${repo}/${item.id}/report`}> <Card_workflow head={item.head_branch} head_sha={item.head_sha} event={item.event} run={item.run_started_at} url={item.workflow_url} owner={item.actor.avatar_url} triggering={item.triggering_actor.login} conc={item.conclusion} title={item.display_title} com_id={item.head_commit.id}/></Link>
          
             </div>
              )
