@@ -55,7 +55,9 @@ const Navbar = () => {
                 <span className="logo font-bold">
                    
                     <Link className="link" to="/">
-                        SbomGen App
+
+                        SBOMGEN
+
                     </Link>
                 </span>
             </div>
