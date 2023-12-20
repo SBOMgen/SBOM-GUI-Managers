@@ -10,7 +10,6 @@ const Card = ({
   cre,
   desc,
   visibility,
-  pri,
 }) => {
   const navigate = useNavigate();
   return (
@@ -72,7 +71,7 @@ const Card = ({
               {user}
             </p>
             <div className="bg-gray-200 px-3 py-1 rounded-full text-xs font-medium text-gray-800 hidden md:block">
-              {pri == true?"Private":"Public"}
+              {visibility}
             </div>
           </div>
           <h3 className="font-black text-gray-800 md:text-3xl text-xl">

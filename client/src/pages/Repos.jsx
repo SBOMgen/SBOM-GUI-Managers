@@ -107,7 +107,7 @@ const Repos = () => {
  
   const filterTable = () => {
     const filtered = list.filter(item => {
-      const valuesToSearch = ['name','language' ,'private'];
+      const valuesToSearch = ['name','language' ,'visibility'];
       let searchString = valuesToSearch.map(key => {
         const value = getNestedValue(item, key);
         return value ? String(value) : '';
