@@ -94,7 +94,7 @@ const DataTable = ({ advisories }) => {
             </div>
         </div>
     </div>
-    <div className="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+    <div className="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg font-bold">
         <table className="min-w-full max-h-[300px] overflow-scroll">
             <thead>
                 <tr>

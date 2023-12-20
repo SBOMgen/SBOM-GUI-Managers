@@ -135,7 +135,7 @@ const Report = ({ repo, owner, run_id }) => {
       {files[0] && files[1] ? (
         <>
           <div>
-            <h1 className="text-6xl font-medium mt-0 m-2 text-center ">VUL TABLE</h1>
+            <h1 className="text-6xl font-medium m-2 text-center ">Vulnerability Table</h1>
             <div className="flex flex-col">
               <div className="flex items-center py-0 pl-[200px] mt-10 justify-center">
                 <PieChart width={800} height={450}>
@@ -153,7 +153,7 @@ const Report = ({ repo, owner, run_id }) => {
               </div>
               <DataTable advisories={temp} />
             </div>
-            <h1 className="text-6xl font-medium m-2 text-center mt-10">SBOM.JSON </h1>
+            <h1 className="text-6xl font-medium m-2 text-center mt-10">Sbom.json </h1>
             <div className="border-2 max-h-[500px] p-2 m-10 overflow-scroll no-scrollbar">
               <pre>{JSON.stringify(sbom, null, 2)}</pre>
             </div>
