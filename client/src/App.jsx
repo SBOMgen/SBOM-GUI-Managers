@@ -3,6 +3,7 @@ import Repos from "./pages/Repos";
 import Navbar from "./components/Navbar";
 import Workflows from "./pages/Workflows";
 import Login from "./pages/Login";
+import Home from "./pages/Home";
 import ReposPage from "./pages/ReposPage";
 import WorkflowsPage from "./pages/WorkflowsPage";
 
@@ -16,6 +17,7 @@ const App = () => {
             <div>
                 <Navbar />
                 <Routes>
+                    <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/repos" element={<ReposPage />} />
                     <Route path="/workflow/:name/:repo" element={<WorkflowsPage />} />

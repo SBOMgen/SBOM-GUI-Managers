@@ -49,7 +49,7 @@ const Navbar = () => {
     };
     return (
         <>
-        <div className="navbar flex justify-between p-3  text-white bg-black m-0">
+        <div className="navbar flex justify-between p-6  text-white bg-zinc-800 m-0">
             <div className="mt-2 flex gap-1">
                 <img src="https://icons8.com/icon/2963/globe" alt=""/>
                 <span className="logo font-bold">
@@ -65,7 +65,7 @@ const Navbar = () => {
                 <>
                
                 <div className="">
-                <ul className="list flex gap-10">
+                <ul className="list flex gap-5 items-center">
                     <li className="listItem">
                         <img
                             src={user.photos[0].value}
@@ -76,7 +76,7 @@ const Navbar = () => {
                         />
                     </li>
                     <li className="listItem inline font-bold mt-2">{user.displayName}</li>
-                    <li className="listItem " onClick={logout}>
+                    <li className="listItem" onClick={logout}>
 
                     <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
                         Logout

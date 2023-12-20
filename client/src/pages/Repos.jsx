@@ -94,9 +94,9 @@ const Repos = () => {
         <>
           {list.map((item,k)=>{
                  return(
-                    <Card key={k} visibility={item.visibility}name={item.name} user={item.owner.login} language={item.language} oi={item.open_issues} owner={item.owner.avatar_url} up={item.updated_at} url={item.url} cre={item.created_at}/>
+                    <Card key={k} visibility={item.visibility}name={item.name} user={item.owner.login} language={item.language} oi={item.open_issues} owner={item.owner.avatar_url} up={item.updated_at} url={item.url} cre={item.created_at} pri={item.private} desc={item.description}/>
                  )
-})}
+          })}
         </>
     )
 };
