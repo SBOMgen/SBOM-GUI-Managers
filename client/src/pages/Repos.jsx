@@ -5,8 +5,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { toggleAuthentication, setTrue, setFalse } from "../function/authSlice";
 import Card from "../components/Card"
 const Repos = () => {
+   
+
     let workflows ={};
     const [list,setlist]=useState([])
+    const [filteredAdvisories, setFilteredAdvisories] = useState(list);
+    const [searchTerm, setSearchTerm] = useState('');
     const auth = async () => {
         return await useSelector((state) => state.isAuthenticated);
     };
@@ -89,10 +93,41 @@ const Repos = () => {
         });
       }
       },[list])
+
+ 
+  
+  useEffect(() => {
+    filterTable();
+  }, [searchTerm, list]);
+
+  const getNestedValue = (obj, path) => {
+    const keys = path.split('.');
+    return keys.reduce((acc, key) => (acc && acc[key] !== undefined ? acc[key] : undefined), obj);
+  };
+ 
+  const filterTable = () => {
+    const filtered = list.filter(item => {
+      const valuesToSearch = ['name','language' ,'private'];
+      let searchString = valuesToSearch.map(key => {
+        const value = getNestedValue(item, key);
+        return value ? String(value) : '';
+      }).join(' ').toLowerCase();
+      
+      console.log(searchString);
+      return searchString.includes(searchTerm.toLowerCase());
+    });
+    setFilteredAdvisories(filtered);
+    console.log("THis",filtered);
+  };
       
     return (
         <>
-          {list.map((item,k)=>{
+        <div className="flex justify-around mt-5">
+        <h1 className="font-bold text-3xl">Your Repositories</h1>
+        <input name="search"type="text"  className ="block h-[25px] px-12 ml-[50px] text-sm text-gray-700" placeholder="Search something" value={searchTerm}
+                     onChange={(e) => setSearchTerm(e.target.value)} />
+        </div>
+          {filteredAdvisories.map((item,k)=>{
                  return(
                     <Card key={k} visibility={item.visibility}name={item.name} user={item.owner.login} language={item.language} oi={item.open_issues} owner={item.owner.avatar_url} up={item.updated_at} url={item.url} cre={item.created_at} pri={item.private} desc={item.description}/>
                  )

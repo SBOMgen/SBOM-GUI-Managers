@@ -133,3 +133,8 @@
       box-shadow: -24px 0 #FFF, 24px 0 #FF3D00;
     }
   }
+  table,th,td{
+    border:solid black 2px;
+
+  }
+  

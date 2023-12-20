@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Markdown from 'react-markdown'
-
+import DataTable from "./Table";
 const Report = ({ repo, owner, run_id }) => {
+  const[glist,setglist]=useState([])
   const [files, setfiles] = useState([])
   const [sbom, setsbom] = useState("")
   const [ver, setver] = useState("")
@@ -82,24 +83,31 @@ const Report = ({ repo, owner, run_id }) => {
 
     <>
       {files[0] && files[1] ? <><div>
-        <h1 className="text-6xl font-bold  ">SBOM.JSON </h1>
+        <h1 className="text-6xl font-bold  m-2">SBOM.JSON </h1>
+        
+        <div className="border-2 max-h-[500px] p-2 m-10 overflow-scroll no-scrollbar">
+          <pre>{JSON.stringify(sbom, null, 2)}</pre>
+          
+        </div>
         <button type="button" onClick={exportData} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 m-4 border-blue-700 hover:border-blue-500 rounded">
           Export Data
         </button>
-        <div className="border-2 max-h-[500px] p-2 m-10 overflow-scroll no-scrollbar">
-          <pre>{JSON.stringify(sbom, null, 2)}</pre>
-        </div>
       </div>
       <div>
         <h1 className="text-6xl font-bold">VER</h1>
-        <div className="max-h-[1200px] overflow-scroll no-scrollbar border-4 m-9">
+        <div className="max-h-[1000px] overflow-scroll no-scrollbar border-4 m-9">
         {temp != undefined && temp.map((item, k) => {
-          return (
-           <Link key={k} to={`${item.source.url}`}>
-           <div  className=" border-2 rounded-xl m-10 p-16 text-center gap-10 font-bold" >
-              <div className="flex justify-between">
-                <div className={color_picker(item.ratings[0].score)}>Status:{item.ratings[0].severity}</div>
+         /* let val=[]
+         val.push(item["bom-ref"],item.recommendation,item.source.name,item.source.url)
+         setglist({val}) */
 
+         return (
+
+           <Link key={k} to={`${item.source.url}`}>
+           <div  className="mx-auto max-w-[600px] border-2 rounded-xl m-10 p-16 text-center gap-10 font-bold" >
+              <div className="flex justify-between">
+                <div >Status:{item.ratings[0].severity}</div>
+className={color_picker(item.ratings[0].score)}
                 <div>{item["bom-ref"]}</div>
               </div>
 
@@ -120,7 +128,9 @@ const Report = ({ repo, owner, run_id }) => {
       </div>
       <div>
         
-      </div></> :  (files.length>=1 && files[0]==undefined )? <h1 className="absolute text-center mt-[40%] text-4xl font-mono w-full"> NOT FOUND !!!, TRY ANOTHER ONE</h1> :<span class="loader"></span> }
+      </div>
+      <DataTable advisories={temp}/>
+      </> :  (files.length>=1 && files[0]==undefined )? <h1 className="absolute text-center mt-[40%] text-4xl font-mono w-full"> NOT FOUND !!!, TRY ANOTHER ONE</h1> :<span class="loader"></span> }
 
 
 
