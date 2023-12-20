@@ -170,7 +170,7 @@ const Report = ({ repo, owner, run_id }) => {
 
         <h1 className="text-center text-3xl mt-8">Pie chart of vulnerabilities</h1>
         <div className="flex items-center mt-10 mb-0 py-0 pl-[280px] justify-center">
-        <PieChart width={800} height={800}>
+        <PieChart width={800} height={500}>
           <Pie
             data={data}
             cx={200}
