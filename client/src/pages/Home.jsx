@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 // import './Profile.css'; 
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
@@ -21,7 +22,7 @@ const Home = () => {
 
                         {(!auth) ? <div className="style-5 rounded-full">
                             <button style={{ color: '#fff' }} className="style-7 rounded-full">Sign in with Github</button>
-                        </div> : <div><button style={{ color: '#fff' }} className="style-7 rounded-full">Repos</button></div>
+                        </div> : <Link to="/repos"><div><button style={{ color: '#fff' }} className="style-7 rounded-full">Repos</button></div></Link>
                         }
 
                     </div>
