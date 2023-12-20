@@ -135,6 +135,9 @@
   }
   table,th,td{
     border:solid black 2px;
-
+    
+  }
+  table{
+    max-height: 300px;
   }
   

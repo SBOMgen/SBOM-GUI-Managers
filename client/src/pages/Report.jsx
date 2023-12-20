@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Markdown from 'react-markdown'
 import DataTable from "./Table";
+import jsPDF from "jspdf";
 const Report = ({ repo, owner, run_id }) => {
   const[glist,setglist]=useState([])
   const [files, setfiles] = useState([])
@@ -31,6 +32,45 @@ const Report = ({ repo, owner, run_id }) => {
     }
 
   };
+  const exportDataPdf = () => {
+    if (sbom !== "") {
+      // Convert sbom object to a formatted JSON string with indentation
+      const jsonString = JSON.stringify(sbom, null, 2);
+  
+      // Set the font size and style
+      const fontSize = 12;
+      const lineHeight = 1.2;
+      
+      // Create a jsPDF instance
+      const pdf = new jsPDF();
+  
+      // Set the initial position
+      let yPosition = 10;
+  
+      // Split the formatted JSON string into lines
+      const lines = pdf.splitTextToSize(jsonString, pdf.internal.pageSize.width - 20);
+  
+      // Add each line to the PDF
+      lines.forEach((line) => {
+        pdf.text(10, yPosition, line);
+        yPosition += fontSize * lineHeight;
+        
+        // Check if the next line will go beyond the bottom margin
+        if (yPosition > pdf.internal.pageSize.height - 10) {
+          pdf.addPage(); // Move to the next page
+          yPosition = 10; // Reset the yPosition for the new page
+        }
+      });
+  
+      // Save the PDF using FileSaver.js
+      pdf.save("data.pdf");
+    }
+  };
+  // Call your function when the document is ready or after jsPDF is loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    // Call your function here
+    // exportDataToPDF();
+  });
   const auth = async () => {
     return await useSelector((state) => state.isAuthenticated);
   };
@@ -83,7 +123,9 @@ const Report = ({ repo, owner, run_id }) => {
 
     <>
       {files[0] && files[1] ? <><div>
-        <h1 className="text-6xl font-bold  m-2">SBOM.JSON </h1>
+        <h1 className="text-6xl font-medium  m-2 text-center mt-10">VUL TABLE</h1>
+        <DataTable advisories={temp}/>
+        <h1 className="text-6xl font-medium  m-2 text-center mt-10">SBOM.JSON </h1>
         
         <div className="border-2 max-h-[500px] p-2 m-10 overflow-scroll no-scrollbar">
           <pre>{JSON.stringify(sbom, null, 2)}</pre>
@@ -92,14 +134,17 @@ const Report = ({ repo, owner, run_id }) => {
         <button type="button" onClick={exportData} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 m-4 border-blue-700 hover:border-blue-500 rounded">
           Export Data
         </button>
+        <button type="button" onClick={exportDataPdf} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 m-4 border-blue-700 hover:border-blue-500 rounded">
+          Export Data as PDF
+        </button>
       </div>
-      <div>
-        <h1 className="text-6xl font-bold">VER</h1>
-        <div className="max-h-[1000px] overflow-scroll no-scrollbar border-4 m-9">
+      
+        {/* <h1 className="text-6xl font-bold">VER</h1>
+        <div className="max-h-[1000px] overflow-scroll no-scrollbar border-4 m-9"> }
         {temp != undefined && temp.map((item, k) => {
-         /* let val=[]
+          let val=[]
          val.push(item["bom-ref"],item.recommendation,item.source.name,item.source.url)
-         setglist({val}) */
+         setglist({val}) 
 
          return (
 
@@ -123,13 +168,13 @@ className={color_picker(item.ratings[0].score)}
            </Link> 
           )
         })}
-        </div>
+      </div> */}
         
-      </div>
+      
       <div>
         
       </div>
-      <DataTable advisories={temp}/>
+      
       </> :  (files.length>=1 && files[0]==undefined )? <h1 className="absolute text-center mt-[40%] text-4xl font-mono w-full"> NOT FOUND !!!, TRY ANOTHER ONE</h1> :<span class="loader"></span> }
 
 
