@@ -55,7 +55,7 @@ const Navbar = () => {
                 <span className="logo font-bold">
                    
                     <Link className="link" to="/">
-                        Lama App
+                        SbomGen App
                     </Link>
                 </span>
             </div>
@@ -89,12 +89,7 @@ const Navbar = () => {
                {/*  <Navigate to="/repos"/> */}
                 </>
             ) : (
-                <Link className="link" to="login">
-                    <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
-                        Login
-                    </button>
-                    {/* <Navigate to="/"/> */}
-                </Link>
+                <div></div>
             )}
          </div>
          

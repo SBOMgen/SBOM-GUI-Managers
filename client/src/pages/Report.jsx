@@ -123,20 +123,22 @@ const Report = ({ repo, owner, run_id }) => {
 
     <>
       {files[0] && files[1] ? <><div>
-        <h1 className="text-6xl font-medium  m-2 text-center mt-10">VUL TABLE</h1>
+        <h1 className="text-6xl font-medium  m-2 text-center mt-10">Vulnerability Table</h1>
         <DataTable advisories={temp}/>
-        <h1 className="text-6xl font-medium  m-2 text-center mt-10">SBOM.JSON </h1>
+        <h1 className="text-6xl font-medium  m-2 text-center mt-10">Sbom.json </h1>
         
         <div className="border-2 max-h-[500px] p-2 m-10 overflow-scroll no-scrollbar">
           <pre>{JSON.stringify(sbom, null, 2)}</pre>
           
         </div>
+        <div className="flex justify-center">
         <button type="button" onClick={exportData} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 m-4 border-blue-700 hover:border-blue-500 rounded">
           Export Data
         </button>
         <button type="button" onClick={exportDataPdf} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 m-4 border-blue-700 hover:border-blue-500 rounded">
           Export Data as PDF
         </button>
+        </div>
       </div>
       
         {/* <h1 className="text-6xl font-bold">VER</h1>
