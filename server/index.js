@@ -1,4 +1,4 @@
-const cookieSession = require("cookie-session");
+const session = require("express-session");
 const express = require("express");
 const cors = require("cors");
 const passport = require("passport");
@@ -16,7 +16,16 @@ const secret = process.env.GITHUB_CLIENT_SECRET
 
 
 app.use(
-    cookieSession({ name: "session", keys: ["lama"], maxAge: 24 * 60 * 60 * 100 })
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            httpOnly: true,
+            secure: false,
+            maxAge: 1000 * 60 * 60 * 24,
+        },
+    })
 );
 
 passport.use(
