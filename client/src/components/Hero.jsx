@@ -9,19 +9,19 @@ const Hero = ({ auth }) => {
         path = "repos"
     }
     return (
-        <div className="relative" id="home">
+        <div className="relative">
             <div
                 aria-hidden="true"
                 className="absolute inset-0 grid grid-cols-4 -space-x-52 opacity-40 "
             >
                 <div className="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 "></div>
-                <div className="blur-[106px] h-32 bg-gradient-to-r from-gray-600 to-gray-300 "></div>
+                <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-500 to-cyan-100 "></div>
             </div>
-            <div className="relative pt-36 ml-auto">
+            <div className="relative pt-6 sm:pt-36 ml-auto">
                 <div className="lg:w-2/3 text-center mx-auto">
-                    <h1 className="text-gray-900  font-bold text-5xl md:text-6xl xl:text-7xl">
+                    <h1 className="text-gray-900  font-bold text-4xl md:text-6xl xl:text-7xl">
                         Supply chain risk management with{" "}
-                        <span className="text-primary ">SBOMgen</span>
+                        <span className="text-primary text-5xl sm:text-7xl">SBOMgen</span>
                     </h1>
                     <p className="mt-8 text-gray-700 ">
                         This resource serves as the detailed foundation of SBOM. It defines SBOM concepts and related terms, offers an updated baseline of how software components are to be represented, and discusses the processes around SBOM creation.

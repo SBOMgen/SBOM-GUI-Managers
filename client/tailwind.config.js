@@ -4,7 +4,7 @@ export default {
  theme: {
   extend: {
    screens: {
-    "custom-md": "1080px",
+    "custom-md": "1280px",
    },
   },
   colors: ({ colors }) => ({

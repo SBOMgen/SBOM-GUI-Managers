@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import ReposPage from "./pages/ReposPage";
 import WorkflowsPage from "./pages/WorkflowsPage";
-
+import Footer from "./components/Footer";
 import Report from "./pages/Report";
 import ReportPage from "./pages/ReportPage";
 
@@ -16,6 +16,7 @@ const App = () => {
         <BrowserRouter>
             <div>
                 <Navbar />
+                
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
@@ -26,12 +27,13 @@ const App = () => {
                     {/* <Route path="/repos" element={<Repos />} />
                     <Route path="/workflows" element={<Workflows />} />
                     <Route path=":repo/:owner/:run_id/report" element={<ReportPage/>} /> */}
-                    
+
                 </Routes>
+                <Footer />
             </div>
         </BrowserRouter>
     );
 };
 
 export default App;
-            
+

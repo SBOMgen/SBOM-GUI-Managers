@@ -1,23 +1,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-// import './Profile.css'; 
-import { Link } from 'react-router-dom';
 import Hero from '../components/Hero'
-import Footer from '../components/Footer'
-
 const Home = () => {
 
     const auth = useSelector(state => state.isAuthenticated);
-
-    // if (user) {
-    //     return <Navigate to="/"/>;
-    // }
     console.log(auth);
+    let path = "login"
+    if (auth) {
+        path = "repos"
+    }
 
     return (
-        <div>
+        <div className="mx-10 custom-md:mx-0">
             <Hero auth={auth}/>
-            <Footer/>
         </div>
     );
 };

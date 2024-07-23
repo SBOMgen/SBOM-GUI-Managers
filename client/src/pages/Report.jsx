@@ -135,7 +135,7 @@ const Report = ({ repo, owner, run_id }) => {
       {files[0] && files[1] ? (
         <>
           <div>
-            <h1 className="text-6xl font-medium m-2 text-center ">Vulnerability Table</h1>
+            <h1 className="mt-20 text-6xl font-medium m-2 text-center ">Vulnerability Table</h1>
             <div className="flex flex-col">
               <div className="flex items-center py-0 pl-[200px] mt-10 justify-center">
                 <PieChart width={800} height={450}>
