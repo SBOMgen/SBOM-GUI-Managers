@@ -1,5 +1,5 @@
 import { Link, Navigate } from "react-router-dom";
-
+import {HashLink} from "react-router-hash-link"
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -47,11 +47,11 @@ const Navbar = () => {
   window.open("http://localhost:5000/auth/logout", "_self");
  };
  return (
-  <nav className="bg-white border-gray-200 ">
+  <nav className="bg-white border-gray-200 mt-1">
    <div className="px-10 custom-md:px-36 flex flex-wrap items-center justify-between mx-auto p-3">
     <div className="flex flex-1 sm:flex-none justify-center sm:justify-start">
      <span className="logo font-bold">
-      <Link className="link" to="/">
+      <Link className="" to="/">
        SBOMGEN
       </Link>
      </span>
@@ -60,31 +60,31 @@ const Navbar = () => {
      className="sm:flex sm:flex-1 sm:justify-center hidden w-full sm:w-auto "
      id="navbar-search"
     >
-     <ul className="flex flex-col p-4 sm:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 sm:flex-row sm:space-x-8 sm:mt-0 sm:border-0 sm:bg-white">
+     <ul className="sm:flex sm:flex-1 justify-center p-4 sm:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 sm:flex-row sm:space-x-8 sm:mt-0 sm:border-0 sm:bg-white">
       <li>
        <Link
         to="/"
-        className="block py-2 pl-3 pr-4 text-white bg-primary rounded sm:bg-transparent sm:text-primary sm:p-0"
+        className="py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 sm:hover:bg-transparent sm:hover:text-primary sm:p-0 "
         aria-current="page"
        >
         Home
        </Link>
       </li>
       <li>
-       <a
-        href="#"
-        className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 sm:hover:bg-transparent sm:hover:text-primary sm:p-0 "
+       <HashLink
+        to="/#about"
+        className="py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 sm:hover:bg-transparent sm:hover:text-primary sm:p-0 "
        >
         About
-       </a>
+       </HashLink>
       </li>
       <li>
-       <a
-        href="#"
-        className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 sm:hover:bg-transparent sm:hover:text-primary sm:p-0 "
+       <HashLink
+        to="/#contribute"
+        className="py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 sm:hover:bg-transparent sm:hover:text-primary sm:p-0 "
        >
-        Contact Us
-       </a>
+        Contribute
+       </HashLink>
       </li>
      </ul>
     </div>
@@ -172,9 +172,14 @@ const Navbar = () => {
         </Link>
        </li>
        <li className="sm:hidden">
-        <Link to="/" className="block py-2 text-gray-900 hover:bg-gray-100">
-         Contact Us
-        </Link>
+        <HashLink to="/#about" className="block py-2 text-gray-900 hover:bg-gray-100">
+         About
+        </HashLink>
+       </li>
+       <li className="sm:hidden">
+        <HashLink to="/#contribute" className="block py-2 text-gray-900 hover:bg-gray-100">
+         Contribute
+        </HashLink>
        </li>
        {user ? (
         <>

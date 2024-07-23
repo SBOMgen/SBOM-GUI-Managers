@@ -19,6 +19,7 @@
     "react-markdown": "^9.0.1",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.21.0",
+    "react-router-hash-link": "^2.4.3",
     "recharts": "^2.10.3"
   },
   "devDependencies": {
