@@ -46,38 +46,42 @@ router.get("/workflows", (req, res) => {
         res.status(400).json({
             success: false,
             message: "failure",
-          });
+        });
+        return;
     }
-    console.log(req.user.accessToken);
+    // console.log(req.user.accessToken);
         const options = {
-            method: 'GET',
+            method: "GET",
             url: `https://api.github.com/repos/${owner}/${repo}/actions/runs`,
             headers: {
-                'Authorization': `Bearer ${req.user.accessToken}`,
-                'User-Agent': 'SBOM-UI'
+                Authorization: `Bearer ${req.user.accessToken}`,
+                "User-Agent": "SBOM-UI",
             },
-          };
-          console.log(options.url);
-          axios(options)
-            .then(response => {
-              const workflows = response.data.workflow_runs;
-            //   console.log(response);
-              let sbom_workflows = [];
-              for (let index = 0; index < workflows.length; index++) {
-                if (workflows[index].name == "Create SBOM")
-                {
-                    sbom_workflows.push(workflows[index]);
+        };
+        // console.log(options.url);
+        axios(options)
+            .then((response) => {
+                const workflows = response.data.workflow_runs;
+                //   console.log(response);
+                let sbom_workflows = [];
+                for (let index = 0; index < workflows.length; index++) {
+                    if (workflows[index].name == "Create SBOM") {
+                        sbom_workflows.push(workflows[index]);
+                    }
                 }
-            }
-            res.status(200).json({
-                success: true,
-                message: "successfull",
-                user: req.user,
-                data: sbom_workflows
-            });
-        })
-            .catch(error => {
-                console.error('Error fetching repositories:', error.response ? error.response.data : error.message);
+                // console.log(sbom_workflows);
+                res.status(200).json({
+                    success: true,
+                    message: "successfull",
+                    user: req.user,
+                    data: sbom_workflows,
+                });
+            })
+            .catch((error) => {
+                console.error(
+                    "Error fetching repositories:",
+                    error.response ? error.response.data : error.message
+                );
             });
         // console.log(user)
     
