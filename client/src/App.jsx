@@ -23,11 +23,6 @@ const App = () => {
                     <Route path="/repos" element={<ReposPage />} />
                     <Route path="/workflow/:name/:repo" element={<WorkflowsPage />} />
                     <Route path="/workflow/:name/:repo/:run_id/report" element={<ReportPage />} />
-
-                    {/* <Route path="/repos" element={<Repos />} />
-                    <Route path="/workflows" element={<Workflows />} />
-                    <Route path=":repo/:owner/:run_id/report" element={<ReportPage/>} /> */}
-
                 </Routes>
                 <Footer />
             </div>

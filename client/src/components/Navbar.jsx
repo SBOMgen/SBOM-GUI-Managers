@@ -74,7 +74,7 @@ const Navbar = () => {
                             <HashLink
                                 to="/#about"
                                 className="py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 sm:hover:bg-transparent sm:hover:text-primary sm:p-0 "
-                                >
+                            >
                                 About
                             </HashLink>
                         </li>
@@ -165,24 +165,24 @@ const Navbar = () => {
                     </button>
                     {/* -------------hamburger---------- */}
                     <div
-                        className={`${isMenuOpen ? "flex" : "hidden"} z-10 flex-col items-center w-full custom-md:hidden transition-all duration-300 ease-in-out overflow-hidden`}
+                        className={`${isMenuOpen ? "absolute flex" : "hidden"} top-20 right-10 flex-col z-10 items-end w-full custom-md:hidden transition-all duration-700 ease-in-out overflow-hidden`}
                         id="navbar-search"
                     >
-                        <ul className="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 space-y-4">
+                        <ul className="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 space-y-2">
                             <li className="sm:hidden">
-                                <Link to="/" className="block py-2 text-gray-900 hover:bg-gray-100">
+                                <Link to="/" className="block py-2 text-gray-900 hover:bg-gray-100 focus:bg-gray-50">
                                     Home
                                 </Link>
                             </li>
                             <li className="sm:hidden">
-                                <HashLink to="/#about" className="block py-2 text-gray-900 hover:bg-gray-100">
+                                <HashLink to="/#about" className="block py-2 text-gray-900 hover:bg-gray-100 focus:bg-gray-50">
                                     About
                                 </HashLink>
                             </li>
                             <li className="sm:hidden">
-                                <HashLink to="/#contribute" className="block py-2 text-gray-900 hover:bg-gray-100">
+                                <a href="https://github.com/SBOMgen" target="_blank" className="block py-2 text-gray-900 hover:bg-gray-100 focus:bg-gray-50">
                                     Contribute
-                                </HashLink>
+                                </a>
                             </li>
                             {user ? (
                                 <>
@@ -209,9 +209,9 @@ const Navbar = () => {
                                     <Link className="link" to="login">
                                         <button
                                             type="button"
-                                            className="relative  flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-primary/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95  sm:w-max"
+                                            className="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-primary/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
                                         >
-                                            <span className="relative text-base font-semibold text-primary ">
+                                            <span className="relative text-base font-semibold text-primary">
                                                 Signin with Github
                                             </span>
                                         </button>

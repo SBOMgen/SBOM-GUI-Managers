@@ -27,14 +27,15 @@ const Hero = ({ auth }) => {
                         This resource serves as the detailed foundation of SBOM. It defines SBOM concepts and related terms, offers an updated baseline of how software components are to be represented, and discusses the processes around SBOM creation.
                     </p>
                     <div className="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
-                        <Link
-                            to="/"
+                        <a
+                            href="https://github.com/SBOMgen/SBOM-GUI-Managers/#readme"
+                            target="_blank"
                             className="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
                         >
                             <span className="relative text-base font-semibold text-white">
-                                Get started
+                                Learn More
                             </span>
-                        </Link>
+                        </a>
                         <Link
                             to={path}
                             className="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-primary/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
@@ -61,7 +62,7 @@ const Hero = ({ auth }) => {
                         <div className="text-left">
                             <h6 className="text-lg font-semibold text-gray-700 ">
                                 automated vulerability detection
-                            </h6>
+                            </h6>Supply chain risk management with SBOMgen
                             <p className="mt-2 text-gray-500">meow meow</p>
                         </div>
                         <div className="text-left">
