@@ -4,6 +4,7 @@ import { PieChart, Pie, Cell, Legend, Tooltip } from "recharts";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import DataTable from "./Table";
+import DependencyTable from "./DependencyTable";
 import jsPDF from "jspdf";
 
 const Report = ({ repo, owner, run_id }) => {
@@ -89,6 +90,7 @@ const Report = ({ repo, owner, run_id }) => {
   }, [files]);
 
   const temp = { ...files[1] }.vulnerabilities;
+  const dependencies = { ...files[0] }.components;
 
   useEffect(() => {
     if (temp && temp.length > 0) {
@@ -152,6 +154,8 @@ const Report = ({ repo, owner, run_id }) => {
                 </PieChart>
               </div>
               <DataTable advisories={temp} />
+              <h1 className="text-6xl font-medium m-2 text-center mt-10">Dependencies </h1>
+              <DependencyTable dependencies={dependencies} />
             </div>
             <h1 className="text-6xl font-medium m-2 text-center mt-10">Sbom.json </h1>
             <div className="border-2 max-h-[500px] p-2 m-10 overflow-scroll no-scrollbar">
