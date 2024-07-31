@@ -24,7 +24,7 @@ const Hero = ({ auth }) => {
                         <span className="text-primary text-5xl sm:text-7xl">SBOMgen</span>
                     </h1>
                     <p className="mt-8 text-gray-700 ">
-                        This resource serves as the detailed foundation of SBOM. It defines SBOM concepts and related terms, offers an updated baseline of how software components are to be represented, and discusses the processes around SBOM creation.
+                    SBOMGEN is an organization dedicated to automating the generation of Software Bill of Materials (SBOM) in CycloneDX format, facilitating the management of dependencies and vulnerabilities within software projects.
                     </p>
                     <div className="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
                         <a
@@ -52,22 +52,22 @@ const Hero = ({ auth }) => {
 
                         </Link>
                     </div>
-                    <div id="about" className="py-8 mt-16 border-y border-gray-100 sm:flex justify-between">
-                        <div className="text-left">
-                            <h6 className="text-lg font-semibold text-gray-700 ">
+                    <div id="about" className="pt-16 mt-20 border-t border-gray-100 sm:flex justify-between">
+                        <div className="text-left max-w-xs">
+                            <h6 className="text-lg font-semibold text-gray-700 mb-6">
                                 Free and Open Source
                             </h6>
-                            <p className="mt-2 text-gray-500">meow meow</p>
+                            <p className="mt-2 text-gray-500">Generate SBOM and Vulnerability report for your projects for free.</p>
                         </div>
-                        <div className="text-left">
-                            <h6 className="text-lg font-semibold text-gray-700 ">
-                                automated vulerability detection
-                            </h6>Supply chain risk management with SBOMgen
-                            <p className="mt-2 text-gray-500">meow meow</p>
+                        <div className="text-left max-w-xs">
+                            <h6 className="text-lg font-semibold text-gray-700 mb-6">
+                                Supports various Package Managers
+                            </h6>
+                            <p className="mt-2 text-gray-500">Supports 13 popular package managers for different languages like npm, yarn, gradle, gomod and many more. </p>
                         </div>
-                        <div className="text-left">
-                            <h6 className="text-lg font-semibold text-gray-700 ">given </h6>
-                            <p className="mt-2 text-gray-500">meow meow</p>
+                        <div className="text-left max-w-xs">
+                            <h6 className="text-lg font-semibold text-gray-700 mb-6">Automated Vulnerability Detection</h6>
+                            <p className="mt-2 text-gray-500 ">Setup workflows on your repository to automate SBOM and Vulnerability report generation. </p>
                         </div>
                     </div>
                 </div>
