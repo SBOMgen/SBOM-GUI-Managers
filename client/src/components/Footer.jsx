@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
         <footer
-            className=" border-t border-gray-100 flex m-auto  mt-40 w-2/3 justify-center items-center  text-center text-surface">
+            className=" border-t border-gray-100 flex m-auto  mt-32 w-2/3 justify-center items-center  text-center text-surface">
                 <div className="mb-6 pt-10 flex justify-center space-x-2">
                     <a
                         href="https://github.com/SBOMgen/"
